@@ -24,3 +24,6 @@ install(TARGETS dynamic_array
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dynamic_array)
+#option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+#add_library(dynarray SHARED src/dyn_array.c)
+# или просто add_library(dynarray src/dyn_array.c) и задать свойство
