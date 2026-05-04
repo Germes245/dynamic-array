@@ -1,4 +1,6 @@
 #include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
 #include "dyn_array.h"
 
 size_t dyn_array_safety_pop(dyn_array *array, uint8_t *array_has_element){

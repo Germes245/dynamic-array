@@ -1,5 +1,7 @@
 #include "dyn_array.h"
 #include <stddef.h>
+#include <stdint.h>
+#include <stdlib.h>
 
 dyn_array dyn_array_init(size_t length){
     dyn_array array;
@@ -15,5 +17,6 @@ dyn_array dyn_array_init(size_t length){
 
 void din_array_free(dyn_array *array){
     free(array->data);
+    array->data = 0;
     array->length=0;
 }
