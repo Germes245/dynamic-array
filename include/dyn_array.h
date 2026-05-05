@@ -1,6 +1,15 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/** @mainpage Документация проекта "dynamic array"
+ *
+ * @section intro это библиотека для удобной работы с массивами указателей в языке програмирования C.
+ * @section api API:
+ * Основные функции описаны в файле @ref dyn_array.h.
+ * @file dyn_array.h
+ * @brief объявление главных методов динамического массива
+*/
+
 typedef struct {
     size_t *data;
     size_t length;
@@ -8,6 +17,11 @@ typedef struct {
 
 // constructor and destructor
 
+/**
+ * @brief инициализирует динамический массив
+ * @param length -- первоначальная длина массива
+ * @details если длина массива равна нулю, то указатель на динамический массив будет содержать цифру 0
+*/
 dyn_array dyn_array_init(size_t length);
 void din_array_free(dyn_array *array);
 
