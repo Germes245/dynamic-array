@@ -33,3 +33,7 @@ void dyn_array_safe_insert(dyn_array *array, size_t index, size_t element);
 // delete element
 
 size_t dyn_array_safety_pop(dyn_array *array, uint8_t *array_has_element);
+
+//get element
+size_t dyn_array_get_element(dyn_array array, size_t index, uint8_t *is_correct_index);
+uint8_t dyn_array_set_element(dyn_array* array, size_t index, size_t element);

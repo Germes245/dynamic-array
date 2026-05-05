@@ -16,3 +16,42 @@
 ## документация
 
 для получения документации убедитесь что у вас установлен Doxygen для генерации документации. в проекте есть файл Doxyfile. выполните в терминале команду doxygen Doxyfile
+
+## Пример использования
+
+```c
+#include "dyn_array.h"
+#include <stdio.h>
+
+int main() {
+    // Создаём массив с начальной ёмкостью 0 (будет расти автоматически)
+    dyn_array arr = dyn_array_init(0);
+    
+    // Добавляем элементы
+    size_t a = 10, b = 20, c = 30;
+    dyn_array_append(&arr, &a);
+    dyn_array_append(&arr, &b);
+    dyn_array_append(&arr, &c);
+    
+    // Получаем элемент по индексу (с проверкой границ)
+    size_t ptr = dyn_array_get(&arr, 1);
+    printf("Второй элемент: %d\n", *ptr);
+    
+    // Освобождаем память
+    dyn_array_free(&arr);
+    return 0;
+}
+```
+
+Обрати внимание, что твоя библиотека хранит указатели, поэтому я передаю адреса переменных.
+
+#### 2. **Инструкция по установке — сделай её копируемой**
+Сейчас она разбита на пункты, что неудобно. Лучше дать блок команд, которые можно скопировать и вставить целиком. Например:
+
+```bash
+git clone https://github.com/Germes245/dynamic-array.git
+cd dynamic-array
+mkdir build && cd build
+cmake ..
+cmake --build .
+# (опционально) sudo cmake --install .
