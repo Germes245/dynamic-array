@@ -34,7 +34,8 @@ void dyn_array_free(dyn_array *array);
 // add element
 
 void dyn_array_append(dyn_array *array, size_t element);
-void dyn_array_safe_insert(dyn_array *array, size_t index, size_t element);
+void dyn_array_unsafe_fast_append(dyn_array *array, size_t element);
+void dyn_array_insert(dyn_array *array, size_t index, size_t element);
 
 // delete element
 

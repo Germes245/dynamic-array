@@ -1,0 +1,26 @@
+удалось выполнить запрос CORS). Код состояния: (null). 2
+let array = [1,2,5,7]
+undefined
+Запрос из постороннего источника заблокирован: Политика одного источника запрещает чтение удалённого ресурса на https://play.google.com/log?format=json&hasfast=true. (Причина: не удалось выполнить запрос CORS). Код состояния: (null). 2
+array.forEach((el, index) => {
+  console.log(el);
+})
+1 debugger eval code:2:11
+2 debugger eval code:2:11
+5 debugger eval code:2:11
+7 debugger eval code:2:11
+undefined
+Запрос из постороннего источника заблокирован: Политика одного источника запрещает чтение удалённого ресурса на https://play.google.com/log?format=json&hasfast=true. (Причина: не удалось выполнить запрос CORS). Код состояния: (null). 2
+array.forEach((el, index, array) => {
+  console.log(el);
+    array[index] = 0;
+})
+1 debugger eval code:2:11
+2 debugger eval code:2:11
+5 debugger eval code:2:11
+7 debugger eval code:2:11
+undefined
+array
+Array(4) [ 0, 0, 0, 0 ]
+
+​

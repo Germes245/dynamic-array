@@ -17,7 +17,7 @@ size_t dyn_array_safety_pop(dyn_array *array, uint8_t *array_has_element){
     else if (array->length == 1){
         size_t return_value = *array->data;
         free(array->data);
-        array->length = 0
+        array->length = 0;
     }
     else {
         *array_has_element = 0;
