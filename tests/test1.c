@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-
+  
 int main(){
     dyn_array array = dyn_array_init(0);
     assert(array.data == 0);

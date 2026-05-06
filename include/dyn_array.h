@@ -23,6 +23,12 @@ typedef struct {
  * @details если длина массива равна нулю, то указатель на динамический массив будет содержать цифру 0
 */
 dyn_array dyn_array_init(size_t length);
+
+/**
+ * @brief освобождает память, которая использовалась для массива
+ * @param array -- динамический массив
+ *
+*/
 void din_array_free(dyn_array *array);
 
 // add element
