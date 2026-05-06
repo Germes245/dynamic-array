@@ -18,7 +18,7 @@ dyn_array dyn_array_init(size_t length){
 void dyn_array_unsafe_free(dyn_array *array){
     free(array->data);
     array->data = 0;
-    array->length=0;
+    array->length = 0;
 }
 
 void dyn_array_free(dyn_array *array){
