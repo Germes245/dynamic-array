@@ -29,7 +29,7 @@ dyn_array dyn_array_init(size_t length);
  * @param array -- динамический массив
  *
 */
-void din_array_free(dyn_array *array);
+void dyn_array_free(dyn_array *array);
 
 // add element
 
