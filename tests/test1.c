@@ -49,6 +49,18 @@ int main(){
         printf("%d ", array.data[i]);
     }
     putchar('\n');
+
+    printf("delete\nбыло: ");
+    for(size_t i = 0; i < array.length; i++){
+        printf("%d ", array.data[i]);
+    }
+    putchar('\n');
+    dyn_array_delete(&array, 1, &is_correct);
+    printf("стало: ");
+    for(size_t i = 0; i < array.length; i++){
+        printf("%d ", array.data[i]);
+    }
+    putchar('\n');
     printf("test passed!\n");
     return 0;
 }

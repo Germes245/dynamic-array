@@ -2,7 +2,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 void dyn_array_unsafe_fast_append(dyn_array *array, size_t element){
     array->length++;
