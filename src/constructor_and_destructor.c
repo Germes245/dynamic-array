@@ -1,10 +1,10 @@
-#include "dyn_array_{{type}}.h"
+#include "dyn_array_{{prefix}}.h"
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
 
-dyn_array_{{type}} dyn_array_{{type}}_init(size_t length){
-    dyn_array_{{type}} array;
+dyn_array_{{prefix}} dyn_array_{{prefix}}_init(size_t length){
+    dyn_array_{{prefix}} array;
     if(length == 0){
         array.data = 0;
         array.length=0;
@@ -15,13 +15,13 @@ dyn_array_{{type}} dyn_array_{{type}}_init(size_t length){
     return array;
 }
 
-void dyn_array_{{type}}_unsafe_free(dyn_array_{{type}} *array){
+void dyn_array_{{prefix}}_unsafe_free(dyn_array_{{prefix}} *array){
     free(array->data);
     array->data = 0;
     array->length = 0;
 }
 
-void dyn_array_{{type}}_free(dyn_array_{{type}} *array){
+void dyn_array_{{prefix}}_free(dyn_array_{{prefix}} *array){
     if(array->length) free(array->data);
     array->data = 0;
     array->length = 0;
