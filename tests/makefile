@@ -1,0 +1,2 @@
+main:
+	gcc test1.c -I/usr/local/include/dynamic_array_{{prefix}}/ -ldynamic_array_{{prefix}}

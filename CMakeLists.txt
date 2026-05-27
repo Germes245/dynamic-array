@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(dynamic_array_{{type}})
+project(dynamic_array_{{prefix}})
 
 set(CMAKE_C_STANDARD 11)
 
@@ -12,18 +12,18 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 file(GLOB SOURCE_FILES "src/*.c")
 
 # Создаём разделяемую (динамическую) библиотеку
-add_library(dynamic_array_{{type}} SHARED ${SOURCE_FILES})
-target_include_directories(dynamic_array_{{type}} PRIVATE include)
+add_library(dynamic_array_{{prefix}} SHARED ${SOURCE_FILES})
+target_include_directories(dynamic_array_{{prefix}} PRIVATE include)
 
 include(GNUInstallDirs)
 
 # Устанавливаем библиотеку и заголовки
-install(TARGETS dynamic_array_{{type}}
+install(TARGETS dynamic_array_{{prefix}}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dynamic_array_{{type}})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/dynamic_array_{{prefix}})
 #option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 #add_library(dynarray SHARED src/dyn_array.c)
 # или просто add_library(dynarray src/dyn_array.c) и задать свойство
