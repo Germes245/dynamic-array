@@ -25,9 +25,9 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
             return;
         }
         array->length++;
-        array->data == realloc(array->data, array->length);
-        size_t pointer_for_source = array->data + index*sizeof({{type}});
-        memmove(pointer_for_source + sizeof({{type}}), pointer_for_source, array->length - index - sizeof({{type}}));
+        array->data = realloc(array->data, array->length * sizeof(uint64_t));
+        size_t pointer_for_source = array->data + index;
+        memmove(array->data + index + 1, array->data + index, (array->length - index) * sizeof(uint64_t));
         array->data[index] = element;
     }
 }

@@ -44,8 +44,8 @@
 
         *array_has_element = 1;
         {{type}} return_value = array->data[index];
-        memmove(array->data + index, array->data + index + 1, array->length - index - 1);
-        array->data = realloc(array->data, --array->length);
+        memmove(array->data + index, array->data + index + 1, (array->length - index - 1) * sizeof(uint64_t));
+        array->data = realloc(array->data, (--array->length)*sizeof(uint64_t));
         return return_value;
     }
     *array_has_element = 0;
