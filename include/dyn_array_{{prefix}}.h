@@ -26,15 +26,30 @@ dyn_array_{{prefix}} dyn_array_{{prefix}}_init(size_t length);
 
 /**
  * @brief освобождает память, которая использовалась для массива
- * @param array -- динамический массив
- *
+ * @param array -- структура динамического массива
+ * @details если массив был освобождён или не имеет элементов, то не делает двойное освобождение
 */
 void dyn_array_{{prefix}}_free(dyn_array_{{prefix}} *array);
 
 // add element
 
+/**
+ * @brief добавляет элемент в конец массива
+ * @param *array -- указатель на структуру динамического массива, element -- добавляемый элемент
+ * @details если массив пустой или был когда-то освобождён, то аллоцирует новый
+*/
 void dyn_array_{{prefix}}_append(dyn_array_{{prefix}} *array, {{type}} element);
+
+/**
+ * @brief быстро, без проверки на существование массива добавляет элемент в конец массива.
+ * @param *array -- указатель на структуру динамического массива, element -- добавляемый элемент
+ * @details если массив пустой или был когда-то освобождён, то может произойти segfault
+*/
 void dyn_array_{{prefix}}_unsafe_fast_append(dyn_array_{{prefix}} *array, {{type}} element);
+
+/**
+ * @brief добавляет элемент 
+*/
 void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{type}} element);
 
 // delete element
