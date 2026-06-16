@@ -48,13 +48,28 @@ void dyn_array_{{prefix}}_append(dyn_array_{{prefix}} *array, {{type}} element);
 void dyn_array_{{prefix}}_unsafe_fast_append(dyn_array_{{prefix}} *array, {{type}} element);
 
 /**
- * @brief добавляет элемент 
+ * @brief вставляет элемент в заданную позицию в массиве
+ * @params *array -- указатель на структуру динамического массива, index -- заданая позиция вставки, element -- добавляемый элемент
 */
 void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{type}} element);
 
 // delete element
 
+/**
+ * @brief удаляет элемент в конце массива и возвращает его
+ * @param *array -- указатель на структуру динамического массива, *array_has_element -- проверка на границы массива, если границы соблюдены, то 1, иначе 0
+ * @details делает проверку на размер массива, так как реализации удаления в зависимости от длины разные
+*/
 {{type}} dyn_array_{{prefix}}_safety_pop(dyn_array_{{prefix}} *array, uint8_t *array_has_element);
+
+/**
+ * @brief удаляет элемент в конце массива без проверки длины и возвращает его
+ * @param *array -- указатель на структуру динамического массива
+ * @details стоит использовать, если длина массива будет больше 1. если точно не известно, то стоит использовать dyn_array_{{prefix}}_safety_pop
+*/
+{{type}} dyn_array_{{prefix}}_unsave_fast_pop(dyn_array_{{prefix}} *array);
+
+
 {{type}} dyn_array_{{prefix}}_delete(dyn_array_{{prefix}}* array, size_t index, uint8_t *array_has_element);
 
 //get element
