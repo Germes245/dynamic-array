@@ -49,7 +49,7 @@ void dyn_array_{{prefix}}_unsafe_fast_append(dyn_array_{{prefix}} *array, {{type
 
 /**
  * @brief вставляет элемент в заданную позицию в массиве
- * @params *array -- указатель на структуру динамического массива, index -- заданая позиция вставки, element -- добавляемый элемент
+ * @param *array -- указатель на структуру динамического массива, index -- заданая позиция вставки, element -- добавляемый элемент
 */
 void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{type}} element);
 
@@ -69,9 +69,22 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
 */
 {{type}} dyn_array_{{prefix}}_unsave_fast_pop(dyn_array_{{prefix}} *array);
 
-
+/**
+ * @brief удаляет элемент в заданой позиции
+ * @param *array -- указатель на структуру динамического массива, index -- задаваемая позиция, *array_has_element -- проверка на границы массива, если границы соблюдены, то 1, иначе 0
+*/
 {{type}} dyn_array_{{prefix}}_delete(dyn_array_{{prefix}}* array, size_t index, uint8_t *array_has_element);
 
 //get element
+
+/**
+ * @brief получение элемента с проверкой на границы массива
+ * @param *array -- указатель на структуру динамического массива, index -- задаваемая позиция, *array_has_element -- проверка на границы массива, если границы соблюдены, то 1, иначе 0
+*/
 {{type}} dyn_array_{{prefix}}_get_element(dyn_array_{{prefix}} array, size_t index, uint8_t *is_correct_index);
+
+/**
+ * @brief изменение элемента с проверкой на границы массива
+ * @param *array -- указатель на структуру динамического массива, index -- задаваемая позиция, element -- элемент
+*/
 uint8_t dyn_array_{{prefix}}_set_element(dyn_array_{{prefix}}* array, size_t index, {{type}} element);
