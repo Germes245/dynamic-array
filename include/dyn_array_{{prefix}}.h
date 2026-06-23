@@ -85,7 +85,9 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
 
 /**
  * @brief изменение элемента с проверкой на границы массива
- * @param *array -- указатель на структуру динамического массива, index -- задаваемая позиция, element -- элемент
+ * @param *array -- указатель на структуру динамического массива
+ * @param index -- задаваемая позиция
+ * @param element -- элемент
 */
 uint8_t dyn_array_{{prefix}}_set_element(dyn_array_{{prefix}}* array, size_t index, {{type}} element);
 
@@ -98,5 +100,11 @@ uint8_t dyn_array_{{prefix}}_set_element(dyn_array_{{prefix}}* array, size_t ind
  * @param length -- длина добавляемого массива.
  * @details Если length == 0, функция ничего не делает.
  *          Если выделение памяти не удалось, массив остаётся неизменным.
- */
+ * пример:
+ * динамический массив содержащий числа 13, 35, 88 и второй массив, содержащий числа 
+*/
 void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length);
+
+// удаление части динамического массива
+
+void 
