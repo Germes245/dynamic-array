@@ -101,7 +101,12 @@ uint8_t dyn_array_{{prefix}}_set_element(dyn_array_{{prefix}}* array, size_t ind
  * @details Если length == 0, функция ничего не делает.
  *          Если выделение памяти не удалось, массив остаётся неизменным.
  * пример:
- * динамический массив содержащий числа 13, 35, 88 и второй массив, содержащий числа 
+ * динамический массив содержит числа 13, 35, 88, а второй массив 12, 24.
+ * динамический массив после конкатенации имеет числа 13, 35, 88, 12, 24.
+ * ``` c
+ * {{type}} array2[] = {12,24};
+ * dyn_array_{{prefix}}_memory_append(&array1, array2, sizeof(array2)/sizeof(array2[0])); 
+ * ```
 */
 void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length);
 
