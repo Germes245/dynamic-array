@@ -89,10 +89,10 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
 */
 uint8_t dyn_array_{{prefix}}_set_element(dyn_array_{{prefix}}* array, size_t index, {{type}} element);
 
-// более прямая работа с памятью
+// конкатенация массивов
 
 /**
- * @brief добавление массива, указатель на который передаётся в аргументе src в конец массива в аргументе array
- * @param *array -- указатель на структуру динамического массива, *src -- указатель на добавляемый участок памяти, length -- количество
+ * @brief конкатенация первого динамического массива c другим вторым массивом
+ * @param *array -- указатель на структуру динамического массива, *src -- указатель на добавляемый массив, length -- длина добавляемого массива
 */
 void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length);

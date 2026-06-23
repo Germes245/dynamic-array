@@ -30,3 +30,17 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
         array->data[index] = element;
     }
 }
+
+void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length){
+    if (array->length){
+        size_t index_for_coping = array->length;
+        array->length += length;
+        array->data = realloc(array->data, array->length * sizeof({{type}}));
+        memcpy(array->data + index_for_coping, src, length * sizeof({{type}}));
+    }
+    else{
+        array->data = malloc(length * sizeof({{type}}));
+        array->length = length;
+        memcpy(array->data, src, length * sizeof({{type}}));
+    }
+}
