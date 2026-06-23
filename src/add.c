@@ -31,16 +31,22 @@ void dyn_array_{{prefix}}_insert(dyn_array_{{prefix}} *array, size_t index, {{ty
     }
 }
 
-void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length){
-    if (array->length){
-        size_t index_for_coping = array->length;
-        array->length += length;
-        array->data = realloc(array->data, array->length * sizeof({{type}}));
-        memcpy(array->data + index_for_coping, src, length * sizeof({{type}}));
+void dyn_array_{{prefix}}_memory_append(dyn_array_{{prefix}} *array, {{type}} *src, size_t length) {
+    if (array == NULL || length == 0 || src == NULL) {
+        return; // некорректные аргументы – ничего не делаем
     }
-    else{
-        array->data = malloc(length * sizeof({{type}}));
-        array->length = length;
-        memcpy(array->data, src, length * sizeof({{type}}));
+
+    size_t new_length = array->length + length;
+    {{type}} *new_data = realloc(array->data, new_length * sizeof({{type}}));
+    if (new_data == NULL) {
+        // Ошибка выделения памяти – массив остаётся прежним
+        return;
     }
+
+    // Копируем новые элементы в конец
+    memcpy(new_data + array->length, src, length * sizeof({{type}}));
+
+    // Обновляем структуру
+    array->data = new_data;
+    array->length = new_length;
 }
