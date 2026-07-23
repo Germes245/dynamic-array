@@ -11,7 +11,7 @@ dyn_array_{{prefix}} dyn_array_{{prefix}}_init(size_t length){
         return array;
     }
     array.length=length;
-    array.data = malloc(length * sizeof({{type}}));
+    array.data = malloc(length * sizeof(type));
     return array;
 }
 
