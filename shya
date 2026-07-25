@@ -1,0 +1,36 @@
+admin@admin-81yh:~/Desktop/ispytanija/C/math/portfolio/dynamic array$ python3 
+Python 3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> buffer = sys.stdin()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sys' is not defined. Did you forget to import 'sys'?
+>>> buffer = sys.stdin
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'sys' is not defined. Did you forget to import 'sys'?
+>>> import sys
+>>> buffer = sys.stdin
+>>> buffer = sys.stdin()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '_io.TextIOWrapper' object is not callable
+>>> buffer = sys.stdin
+>>> for i in sys.stdin:
+...     buffer += i
+... 
+sfafsaf
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+TypeError: unsupported operand type(s) for +=: '_io.TextIOWrapper' and 'str'
+>>> buffer = ''
+>>> for i in sys.stdin:
+...     buffer += i
+... 
+faf
+sfsssasa
+sfsfsf
+>>> buffer
+'faf\nsfsssasa\nsfsfsf\n'
+>>> exit(0)
+admin@admin-81yh:~/Desktop/ispytanija/C/math/portfolio/dynamic array$ 

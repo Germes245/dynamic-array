@@ -1,3 +1,4 @@
+python download script/build
 build
 a.out
 src/delete.c.dump

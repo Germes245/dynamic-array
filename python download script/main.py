@@ -2,6 +2,7 @@ from pathlib import Path
 from jinja2 import Environment
 import json
 from os import mkdir
+import sys
 
 def template_folder(name_of_containg_templates_folder, name_of_folder_for_generated_code, dicto):
     p = Path('text')
@@ -23,5 +24,22 @@ def template_folder(name_of_containg_templates_folder, name_of_folder_for_genera
             print(dir)
             with open(dir, "w") as file2:
                 file2.write(text)
-with open("config.json", "r") as file: dict_ = json.loads(file.read())
-template_folder("text", "copia", dict_)
+
+
+try: mkdir("build")
+except FileExistsError: pass
+try: mkdir("build/src")
+except FileExistsError: pass
+try: mkdir("build/include")
+except FileExistsError: pass
+
+print("введите желаемый тип, а для конца ввода введите EOF (Ctrl + D):")
+buffer = ''
+
+# чтение потока stdin
+for i in sys.stdin:
+    buffer += i
+
+print("\n")
+print(buffer)
+
