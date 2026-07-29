@@ -3,15 +3,12 @@ from jinja2 import Environment
 import json
 from os import mkdir
 import sys, os
-
-import os
-from jinja2 import Environment, FileSystemLoader
-
 def template_folder(name_of_containg_templates_folder, name_of_folder_for_generated_code, dicto):
     """
-    Рекурсивно обрабатывает все файлы в папке шаблонов как шаблоны Jinja2,
-    рендерит их с переданным словарём и записывает результаты в целевую папку,
-    сохраняя структуру подкаталогов.
+    Рекурсивно обрабатывает все файлы в папке шаблонов:
+    - содержимое каждого файла рендерится как шаблон Jinja2;
+    - имя каждого файла также обрабатывается как шаблон (с теми же данными);
+    - результаты сохраняются в целевую папку с сохранением структуры подкаталогов.
 
     Аргументы:
         name_of_containg_templates_folder (str): путь к папке с исходными шаблонами.
@@ -26,17 +23,32 @@ def template_folder(name_of_containg_templates_folder, name_of_folder_for_genera
         for file in files:
             # Полный путь к исходному файлу
             src_path = os.path.join(root, file)
-            # Относительный путь от корня шаблонов (сохраняет структуру подпапок)
+            # Относительный путь от корня шаблонов (содержит подпапки)
             rel_path = os.path.relpath(src_path, name_of_containg_templates_folder)
-            # Путь, куда будет записан результат в целевой папке
-            dst_path = os.path.join(name_of_folder_for_generated_code, rel_path)
 
-            # Создаём родительские каталоги для целевого файла, если их нет
+            # Разделяем путь на каталог и имя файла
+            rel_dir = os.path.dirname(rel_path)   # может быть пустой строкой
+            old_filename = os.path.basename(rel_path)
+
+            # Рендерим имя файла как шаблон
+            filename_template = env.from_string(old_filename)
+            new_filename = filename_template.render(**dicto)
+
+            # Собираем новый относительный путь (папки не шаблонизируются)
+            if rel_dir:
+                new_rel_path = os.path.join(rel_dir, new_filename)
+            else:
+                new_rel_path = new_filename
+
+            # Целевой путь в папке назначения
+            dst_path = os.path.join(name_of_folder_for_generated_code, new_rel_path)
+
+            # Создаём родительские каталоги
             dst_dir = os.path.dirname(dst_path)
             if dst_dir:
                 os.makedirs(dst_dir, exist_ok=True)
 
-            # Загружаем шаблон по относительному пути и рендерим с переданными данными
+            # Загружаем шаблон по исходному (старому) относительному пути и рендерим содержимое
             template = env.get_template(rel_path)
             rendered_content = template.render(**dicto)
 
@@ -61,5 +73,5 @@ for i in sys.stdin:
     buffer += i
 dicto["prefix"] = buffer
 
-template_folder("../code/src", "build/src", dicto)
-template_folder("../code/include", "build/include", dicto)
+template_folder("../code", "build", dicto)
+template_folder("../code", "build", dicto)
