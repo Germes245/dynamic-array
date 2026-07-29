@@ -4,5 +4,5 @@ cd build
 mkdir -p src
 mkdir -p include
 mkdir -p build
-pwd
-./venv/bin/python3 main.py
+cd ..
+python3 main.py
